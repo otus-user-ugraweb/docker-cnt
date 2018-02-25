@@ -1,0 +1,22 @@
+version: '2'
+services:
+  socket:
+    container_name: socketServer
+    build: 
+      context: .
+      dockerfile: ./dockerfile
+    ports:
+      - 10201:10201
+    networks:
+      mynet:
+        ipv4_address: 10.5.0.6
+    volumes:
+      - ./src:/src
+
+networks:
+  mynet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
