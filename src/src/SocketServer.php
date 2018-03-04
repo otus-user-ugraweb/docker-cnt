@@ -77,6 +77,8 @@ class SocketServer
                         $this->sendMessage($resourceSocket, $message);
                         $this->destroySocket();
                         $this->initializeSocket();
+                    } else {
+                        $this->sendMessage($resourceSocket, 'port was not updated in the config file');
                     }
 
                     break 1;
@@ -84,7 +86,7 @@ class SocketServer
 
                 $validityStatus = (new Validator($buffer))->checkSequence();
 
-                $message = sprintf("The sequence is received: (%s). Valid - %s \n", $buffer, $validityStatus);
+                $message = sprintf("The sequence is received: %s. Valid - %s \n", $buffer, $validityStatus);
                 echo $message;
 
                 $this->sendMessage($resourceSocket, $validityStatus);
