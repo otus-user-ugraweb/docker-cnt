@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: ./dockerfile
     ports:
-      - 10000:20000
+      - 10000-20000:10000-20000
     networks:
       mynet:
         ipv4_address: 10.5.0.6
